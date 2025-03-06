@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto para Fala</title>
+    <style>
+        p {
+            font-size: 20px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <p id="texto">Passe o mouse aqui para ouvir: <span id="palavra">Oi pessoal</span></p>
+
+    <script>
+        // Função que vai transformar o texto em fala
+        function falarTexto(texto) {
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(texto);
+            synth.speak(utterance);
+        }
+
+        // Selecionando o elemento da palavra
+        const palavraElement = document.getElementById("palavra");
+
+        // Adicionando evento de mouseover
+        palavraElement.addEventListener("mouseover", function() {
+            const texto = palavraElement.textContent; // Obtendo o texto "Oi pessoal"
+            falarTexto(texto); // Chamando a função de fala
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto para Fala</title>
+    <style>
+        p {
+            font-size: 20px;
+            margin: 20px;
+        }
+        span {
+            cursor: pointer; /* Adicionando cursor para indicar que é interativo */
+        }
+    </style>
+</head>
+<body>
+
+    <p id="texto">Passe o mouse aqui para ouvir: <span id="oi">Oi</span> <span id="pessoal">pessoal</span></p>
+
+    <script>
+        // Função que vai transformar o texto em fala
+        function falarTexto(texto) {
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(texto);
+            synth.speak(utterance);
+        }
+
+        // Selecionando os elementos de "Oi" e "pessoal"
+        const oiElement = document.getElementById("oi");
+        const pessoalElement = document.getElementById("pessoal");
+
+        // Adicionando evento de mouseover para o "Oi"
+        oiElement.addEventListener("mouseover", function() {
+            falarTexto("Oi"); // Fala "Oi" quando o mouse estiver em cima do "Oi"
+        });
+
+        // Adicionando evento de mouseover para o "pessoal"
+        pessoalElement.addEventListener("mouseover", function() {
+            falarTexto("pessoal"); // Fala "pessoal" quando o mouse estiver em cima do "pessoal"
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto para Fala</title>
+    <style>
+        p {
+            font-size: 20px;
+            margin: 20px;
+        }
+        span {
+            cursor: pointer; /* Adicionando cursor para indicar que é interativo */
+        }
+    </style>
+</head>
+<body>
+
+    <p id="texto">Passe o mouse aqui para ouvir: <span id="oi">Oi</span> <span id="pessoal">pessoal</span></p>
+
+    <script>
+        // Função que vai transformar o texto em fala
+        function falarTexto(texto) {
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(texto);
+            synth.speak(utterance);
+        }
+
+        // Função para garantir que a fala aconteça uma única vez
+        function adicionarEventoDeFala(element, texto) {
+            element.addEventListener("mouseover", function handler() {
+                falarTexto(texto); // Fala o texto correspondente
+                element.removeEventListener("mouseover", handler); // Remove o evento após a primeira execução
+            });
+        }
+
+        // Selecionando os elementos de "Oi" e "pessoal"
+        const oiElement = document.getElementById("oi");
+        const pessoalElement = document.getElementById("pessoal");
+
+        // Adicionando os eventos para "Oi" e "pessoal"
+        adicionarEventoDeFala(oiElement, "Oi");
+        adicionarEventoDeFala(pessoalElement, "pessoal");
+    </script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto para Fala</title>
+    <style>
+        p {
+            font-size: 20px;
+            margin: 20px;
+        }
+        span {
+            cursor: pointer; /* Adicionando cursor para indicar que é interativo */
+        }
+    </style>
+</head>
+<body>
+
+    <p id="texto">Passe o mouse aqui para ouvir: <span id="oi">Oi</span> <span id="pessoal">pessoal</span></p>
+
+    <script>
+        // Função que vai transformar o texto em fala
+        function falarTexto(texto) {
+            const synth = window.speechSynthesis;
+
+            // Cria a fala (utterance)
+            const utterance = new SpeechSynthesisUtterance(texto);
+
+            // Começa a falar o texto
+            synth.speak(utterance);
+        }
+
+        // Selecionando os elementos de "Oi" e "pessoal"
+        const oiElement = document.getElementById("oi");
+        const pessoalElement = document.getElementById("pessoal");
+
+        // Função para adicionar o evento e falar a palavra
+        function adicionarEventoFala(element, texto) {
+            element.addEventListener("mouseover", function() {
+                falarTexto(texto); // Fala a palavra quando o mouse estiver em cima do elemento
+                element.removeEventListener("mouseover", arguments.callee); // Remove o evento após falar
+            });
+        }
+
+        // Adicionando os eventos para "Oi" e "pessoal"
+        adicionarEventoFala(oiElement, "Oi");
+        adicionarEventoFala(pessoalElement, "pessoal");
+    </script>
+
+</body>
+</html>
